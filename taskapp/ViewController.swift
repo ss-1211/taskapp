@@ -33,9 +33,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         print("searchBarCancelButtonClicked")
-        categorySearchBar.showsCancelButton = false
+        categorySearchBar.showsCancelButton = true
         self.view.endEditing(true)
-        categorySearchBar.text = ""
+        taskArray = try! Realm().objects(Task.self).sorted(byKeyPath: "date", ascending: false)
         tableView.reloadData()
     }
     
